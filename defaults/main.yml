@@ -1,0 +1,7 @@
+---
+
+# Users added to required Unix groups to interact with qemu/kvm.
+kvm_users: []
+# - name: markus
+
+kvm_virtual_machine_manager: false

@@ -1,0 +1,18 @@
+---
+
+kvm_package_names:
+- libvirt
+- qemu
+- qemu-arch-extra
+- qemu-block-gluster
+- qemu-block-iscsi
+- qemu-block-rbd
+
+kvm_service_name: libvirtd
+
+kvm_vm_manager_package_names:
+- virt-manager
+- virt-viewer
+
+kvm_unix_groups:
+- libvirt

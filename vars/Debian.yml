@@ -1,0 +1,19 @@
+---
+
+kvm_package_names:
+- libvirt-clients
+- libvirt-daemon
+- libvirt-daemon-driver-qemu
+- libvirt-daemon-driver-storage-gluster
+- libvirt-daemon-driver-storage-rbd
+- libvirt-daemon-system-systemd
+- libvirt-dbus
+
+kvm_service_name: libvirtd
+
+kvm_vm_manager_package_names:
+- virtinst
+- virt-manager
+
+kvm_unix_groups:
+- libvirt
