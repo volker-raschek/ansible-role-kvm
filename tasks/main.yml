@@ -5,10 +5,10 @@
   register: cpu_info
   changed_when: false
 
-# - name: Verify if Intel VMX or AMD SVM is enabled
-#   fail:
-#     msg: "Intel VMX or AMD SVE not enabled"
-#   when: "'vmx' not in cpu_info.stdout and 'svm' not in cpu_info.stdout"
+- name: Verify if Intel VMX or AMD SVM is enabled
+  fail:
+    msg: "Intel VMX or AMD SVE not enabled"
+  when: "'vmx' not in cpu_info.stdout and 'svm' not in cpu_info.stdout"
 
 - name: Load variables
   include_vars: "{{ ansible_os_family }}.yml"
