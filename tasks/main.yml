@@ -13,12 +13,12 @@
 - name: Load variables
   include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Add Virt-Manager programs
+- name: Add virt-manager to list of kvm packages
   set_fact:
     kvm_package_names: "{{ kvm_package_names + kvm_vm_manager_package_names }}"
   when: kvm_virtual_machine_manager
 
-- name: Install qemu with dependencies
+- name: Install kvm packages
   package:
     name: "{{ item }}"
     state: present
@@ -41,7 +41,7 @@
       group: root
       mode: 0644
 
-- name: Append Unix user to Unix groups to interact with qemu/kvm
+- name: Append unix user to unix groups to interact with qemu/kvm
   user:
     name: "{{ item.name }}"
     append: yes
