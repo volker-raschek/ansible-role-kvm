@@ -1,19 +1,22 @@
 galaxy_info:
+  role_name: kvm
   author: Markus Pesch
   description: Role to install and configure kvm on different distributions
   company: Cryptic Systems
   license: MIT
-  min_ansible_version: 2.1
+  min_ansible_version: "2.9"
   platforms:
-  - name: Archlinux
+  - name: ArchLinux
     versions:
     - all
   - name: Ubuntu
     versions:
-    - 20.04
-  - name: RockyLinux
+    - jammy
+    - bionic
+  - name: EL
     versions:
-    - 8.5
+    - all
+
 
   galaxy_tags:
   - kvm
