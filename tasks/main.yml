@@ -10,7 +10,7 @@
     msg: "Intel VMX or AMD SVE not enabled"
   when: "'vmx' not in cpu_info.stdout and 'svm' not in cpu_info.stdout"
 
-- name: Load variables
+- name: Include OS-specific variables
   include_vars: "{{ ansible_os_family }}.yml"
 
 - name: Add virt-manager to list of kvm packages
