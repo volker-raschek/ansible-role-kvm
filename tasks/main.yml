@@ -1,12 +1,13 @@
 ---
 
 - name: Read cpuinfo from kernel
-  shell: cat /proc/cpuinfo
+  ansible.builtin.command:
+    cmd: cat /proc/cpuinfo
   register: cpu_info
   changed_when: false
 
 - name: Verify if Intel VMX or AMD SVM is enabled
-  fail:
+  ansible.builtin.fail:
     msg: "Intel VMX or AMD SVE not enabled"
   when: "'vmx' not in cpu_info.stdout and 'svm' not in cpu_info.stdout"
 
@@ -14,12 +15,12 @@
   include_vars: "{{ ansible_os_family }}.yml"
 
 - name: Add virt-manager to list of kvm packages
-  set_fact:
+  ansible.builtin.set_fact:
     kvm_package_names: "{{ kvm_package_names + kvm_vm_manager_package_names }}"
   when: kvm_virtual_machine_manager
 
 - name: Install kvm packages
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
   with_items:
@@ -29,12 +30,12 @@
   when: cpu_info.stdout.find('sev') != -1
   block:
   - name: Load kernel module "kvm_amd" temporarily
-    modprobe:
+    community.general.modprobe:
       name: "kvm_amd"
       params: "sev=1"
       state: present
   - name: Load kernel module "kvm_amd" persistently
-    template:
+    ansible.builtin.template:
       src: "etc/modules-load.d/10-amd-sve.conf.j2"
       dest: "/etc/modules-load.d/10-amd-sve.conf"
       owner: root
@@ -42,14 +43,14 @@
       mode: 0644
 
 - name: Append unix user to unix groups to interact with qemu/kvm
-  user:
+  ansible.builtin.user:
     name: "{{ item.name }}"
-    append: yes
+    append: true
     groups: "{{ kvm_unix_groups }}"
   with_items: "{{ kvm_users }}"
 
 - name: Start and enable {{ kvm_service_name }}
-  systemd:
+  ansible.builtin.systemd:
     name: "{{ kvm_service_name }}"
     state: started
-    enabled: yes
+    enabled: true
