@@ -40,7 +40,7 @@
       dest: "/etc/modules-load.d/10-amd-sve.conf"
       owner: root
       group: root
-      mode: 0644
+      mode: "0644"
 
 - name: Append unix user to unix groups to interact with qemu/kvm
   ansible.builtin.user:
