@@ -1,12 +1,14 @@
 ---
 
 kvm_package_names:
+- dmidecode
+- dnsmasq     # for dns of virtual networks
 - libvirt
+- openbsd-netcat  # required to remote access via virt-manager
 - qemu
 - qemu-arch-extra
 - qemu-block-gluster
 - qemu-block-iscsi
-- qemu-block-rbd
 - edk2-ovmf # efi
 
 kvm_service_name: libvirtd
@@ -14,7 +16,6 @@ kvm_service_name: libvirtd
 kvm_vm_manager_package_names:
 - virt-manager
 - virt-viewer
-- openbsd-netcat
 
 kvm_unix_groups:
 - libvirt
