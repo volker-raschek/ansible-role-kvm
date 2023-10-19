@@ -6,7 +6,6 @@ kvm_package_names:
 - libvirt
 - openbsd-netcat  # required to remote access via virt-manager
 - qemu
-- qemu-arch-extra
 - qemu-block-gluster
 - qemu-block-iscsi
 - edk2-ovmf # efi
