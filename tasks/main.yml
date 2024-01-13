@@ -54,3 +54,10 @@
     name: "{{ kvm_service_name }}"
     state: started
     enabled: true
+
+# FIXME:
+# Create btrfs subvolume /var/lib/libvirt/images and execute `chattr +C` if subvolume was successfullt created. Check if
+# directory exists. If not check if filesystem type of /var/lib/libvirt/images is btrfs via `stat -f --format=%T <path>`
+# and if the inode is 256 or 2 with `stat --format="%i" <path>`.
+
+# - name: ...
