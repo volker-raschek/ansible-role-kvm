@@ -7,14 +7,14 @@ galaxy_info:
   license: MIT
   min_ansible_version: "2.9"
   platforms:
-  - name: ArchLinux
+  - name: "ArchLinux"
     versions:
     - all
-  - name: Ubuntu
+  - name: "Ubuntu"
     versions:
     - jammy
     - bionic
-  - name: EL
+  - name: "EL"
     versions:
     - all
 
